@@ -1,0 +1,11 @@
+project: savantenvs/caddy
+target: fuzz_duration
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/fuzz_duration/testsuite
+cmds:
+  - cmd: /mayhem/fuzz_duration
+    libfuzzer: true
+    timeout: 30
+    env:
+      MFUZZ_COMPAT_LEVEL: '2'

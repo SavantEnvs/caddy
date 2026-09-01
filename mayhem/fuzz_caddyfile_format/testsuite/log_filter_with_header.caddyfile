@@ -1,0 +1,22 @@
+localhost {
+	log {
+		output file ./caddy.access.log
+	}
+	log health_check_log {
+		output file ./caddy.access.health.log
+		no_hostname
+	}
+	log general_log {
+		output file ./caddy.access.general.log
+		no_hostname
+	}
+	@healthCheck `header_regexp('User-Agent', '^some-regexp$') || path('/healthz*')`
+	handle @healthCheck {
+		log_name health_check_log general_log
+		respond "Healthy"
+	}
+
+	handle {
+		respond "Hello World"
+	}
+}

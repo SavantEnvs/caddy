@@ -1,0 +1,1 @@
+http: response.Write on hijacked connection from %s (%s:%d)½P/

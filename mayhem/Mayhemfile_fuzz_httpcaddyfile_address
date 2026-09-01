@@ -1,0 +1,11 @@
+project: savantenvs/caddy
+target: fuzz_httpcaddyfile_address
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/fuzz_httpcaddyfile_address/testsuite
+cmds:
+  - cmd: /mayhem/fuzz_httpcaddyfile_address
+    libfuzzer: true
+    timeout: 30
+    env:
+      MFUZZ_COMPAT_LEVEL: '2'

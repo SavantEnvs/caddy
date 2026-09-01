@@ -1,0 +1,6 @@
+:8884
+reverse_proxy 127.0.0.1:65535 {
+	transport http {
+		forward_proxy_url http://localhost:8080
+	}
+}

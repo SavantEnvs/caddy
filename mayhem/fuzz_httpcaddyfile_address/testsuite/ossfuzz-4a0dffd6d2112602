@@ -1,0 +1,67 @@
+:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Starts the Caddy process, optionally bootstrapped with an initial config file,
+and blocks indefinitely until the server is stopped; i.e. runs Caddy in
+"daemon" mode (foreground).
+
+If a config file is specified, it will be applied immediately after the process
+is running. If the config file is not in Caddy's native JSON format, you can
+specify an adapter with --adapter to adapt the given config file to
+Caddy's native format. The config @dapter must be a registered module. Any
+warnings will be printed to the log, but beware that any adaptation without
+errors will immediately be used. If you want to review the results of the
+adaptation first, use the 'adapt' subcommand.
+
+As a special case, if the current working directory has a file called
+"Caddyfile" and the caddyfile config adapter is plugged in (default), then
+that file will be loaded and used to configure Caddy, even without any command
+line flags.
+
+If --envfile is specified, an environment file with environment variables in
+the KEY=VALUE format will be loaded into the Caddy process.
+
+If --environ is specified, the environment as seen by the Caddy process will
+be printed before starting. This is the same as the environ command but does
+not quit after printing, and can be useful for troubleshooting.
+
+The --resume flag will override the --config flag if there is a config auto-
+save file. It is not an error if --resume is used and no autosave file exists.
+
+If --watch is specified, the config file will be loaded automatically after
+changes. ⚠️ This is dangerous in production! Only use this option in a local
+development environment.
