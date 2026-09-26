@@ -1,0 +1,11 @@
+# origin: https://app.mayhem.security/mayhemheroes/caddy/fuzz-extract-front-matter/112
+project: savantenvs/caddy
+target: fuzz-extract-front-matter-buggy-mhh-run-112
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+cmds:
+  - cmd: /mayhem/fuzz_frontmatter
+    libfuzzer: true
+    timeout: 30
+    env:
+      MFUZZ_COMPAT_LEVEL: '2'
